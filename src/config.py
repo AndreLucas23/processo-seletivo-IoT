@@ -1,4 +1,5 @@
 FREQUENCY = 1000
+PWM_MAX_DUTY = 1023
 
 class Pins:
     I2C_SDA = 21
