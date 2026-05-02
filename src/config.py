@@ -18,3 +18,8 @@ class Thresholds:
 class Sensitivities:
     ACCEL = 16384
     GYRO = 131
+
+class Status:
+    OK = 0
+    DANGER = 1
+    CRITICAL = 2

@@ -6,7 +6,7 @@ from config import (
     PWM_MAX_DUTY
 )
 
-class Led:
+class LedController:
     def __init__(self):
         self.pwm_red = PWM(Pin(Pins.LED_RED),freq=FREQUENCY)
         self.pwm_green = PWM(Pin(Pins.LED_GREEN),freq=FREQUENCY)
