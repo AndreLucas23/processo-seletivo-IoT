@@ -1,7 +1,53 @@
 {
   "version": 1,
-  "author": "Uri Shaked",
+  "author": "André Lucas",
   "editor": "wokwi",
-  "parts": [ { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} } ],
-  "connections": [ [ "esp:TX", "$serialMonitor:RX", "", [] ], [ "esp:RX", "$serialMonitor:TX", "", [] ] ]
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "imu1",
+      "top": 50.98,
+      "left": 127.72,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 41.54,
+      "left": -153.37,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 128.8,
+      "left": -123.7,
+      "attrs": { "common": "cathode" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:21", "imu1:SDA", "green", [ "h0" ] ],
+    [ "imu1:SCL", "esp:22", "gold", [ "h-28.8", "v-19.28" ] ],
+    [ "esp:GND.2", "imu1:GND", "black", [ "h24.04", "v28.88" ] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v-57.68", "h-148.99" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.2", "black", [ "v-86.4", "h206.36" ] ],
+    [ "oled1:SCL", "esp:22", "gold", [ "v-76.8", "h211.5", "v76.8" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v-67.2", "h220.87", "v96" ] ],
+    [ "rgb1:B", "esp:27", "blue", [ "v28.8", "h59.2", "v-76.8" ] ],
+    [ "rgb1:G", "esp:26", "green", [ "v19.2", "h58.9", "v-76.8" ] ],
+    [ "rgb1:R", "esp:25", "red", [ "v9.6", "h67.2", "v-76.8" ] ],
+    [ "rgb1:COM", "esp:GND.1", "black", [ "v47.6", "h86.5", "v-76.8" ] ]
+  ],
+  "dependencies": {}
 }
