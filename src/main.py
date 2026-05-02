@@ -14,7 +14,7 @@ def set_led_color(led_percent_red, led_percent_green, led_percent_blue):
     led_green.duty(led_green_duty)
     led_blue.duty(led_blue_duty)
 
-frequency = 1000
+FREQUENCY = 1000
 
 i2c = SoftI2C(sda=Pin(21), scl=Pin(22))
 
@@ -23,9 +23,9 @@ mpu = accel(i2c)
 oled = SSD1306_I2C(128, 64, i2c)
 oled.fill(0)
 
-led_red = PWM(Pin(25), freq=frequency)
-led_green = PWM(Pin(26), freq=frequency)
-led_blue = PWM(Pin(27), freq=frequency)
+led_red = PWM(Pin(25), freq=FREQUENCY)
+led_green = PWM(Pin(26), freq=FREQUENCY)
+led_blue = PWM(Pin(27), freq=FREQUENCY)
 
 ACCEL_DANGER_THRESHOLD = 2
 ACCEL_SINGLE_DANGER_THRESHOLD = 1.48
