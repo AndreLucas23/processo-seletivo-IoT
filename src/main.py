@@ -1,6 +1,10 @@
 from machine import Pin, SoftI2C, PWM
 from time import sleep_ms
 from math import sqrt
+import sys
+
+if '/src' not in sys.path:
+    sys.path.append('./src')
 
 from mpu6050 import accel
 from ssd1306 import SSD1306_I2C
@@ -35,6 +39,7 @@ GYRO_DANGER_THRESHOLD = 150
 ACCEL_SENSITIVITY = 16384
 GYRO_SENSITIVITY = 131
 
+print('Teste')
 print('Sensor MPU6050 iniciado')
 
 while True:
