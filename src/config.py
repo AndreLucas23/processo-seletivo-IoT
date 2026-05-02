@@ -9,11 +9,12 @@ class Pins:
     LED_BLUE = 27
 
 class Thresholds:
-    ACCEL_DANGER = 2
-    ACCEL_DANGER_SINGLE = 1.48
+    ACCEL_DANGER = 1.48
     ACCEL_CRITICAL = 2.8
     ACCEL_CRITICAL_SINGLE = 1.84
-    GYRO_DANGER = 150
+    GYRO_DANGER = 149.9
+    GYRO_CRITICAL = 330
+    GYRO_CRITICAL_SINGLE = 219.9
 
 class Sensitivities:
     ACCEL = 16384
@@ -23,3 +24,8 @@ class Status:
     OK = 0
     DANGER = 1
     CRITICAL = 2
+
+class Colors:
+    GREEN  = (0, 100, 0)
+    YELLOW = (100, 100, 0)
+    RED = (100, 0, 0)

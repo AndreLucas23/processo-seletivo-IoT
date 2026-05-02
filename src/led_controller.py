@@ -2,6 +2,8 @@ from machine import Pin, PWM
 
 from config import (
     Pins,
+    Status,
+    Colors,
     FREQUENCY,
     PWM_MAX_DUTY
 )
@@ -20,3 +22,11 @@ class LedController:
         self.pwm_red.duty(pwm_red_duty)
         self.pwm_green.duty(pwm_green_duty)
         self.pwm_blue.duty(pwm_blue_duty)
+
+    def set_color_by_status(self, sensor_status):
+        if Status.CRITICAL in sensor_status.values():
+            self.set_color(*Colors.RED)
+        elif Status.DANGER in sensor_status.values():
+            self.set_color(*Colors.YELLOW)
+        else:
+            self.set_color(*Colors.GREEN)
