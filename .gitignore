@@ -1,1 +1,16 @@
-.env
+# Ambientes Virtuais
+venv/
+.venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Configurações de IDE
+.vscode/
+.idea/
+
+# Arquivos de sistema/logs
+*.log
+.DS_Store
