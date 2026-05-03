@@ -10,7 +10,7 @@ class Pins:
 
 class Thresholds:
     ACCEL_DANGER = 1.48
-    ACCEL_CRITICAL = 2.8
+    ACCEL_CRITICAL = 2.4
     ACCEL_CRITICAL_SINGLE = 1.84
     GYRO_DANGER = 149.9
     GYRO_CRITICAL = 330

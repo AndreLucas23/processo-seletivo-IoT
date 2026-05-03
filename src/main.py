@@ -1,29 +1,25 @@
 from machine import Pin, SoftI2C
-from time import sleep_ms
 
-from config import Pins
+from utils.config import Pins
 
-from led_controller import LedController
-from sensor_controller import SensorController
-from display_controller import DisplayController
+from app import App
+from controllers.led_controller import LedController
+from controllers.sensor_controller import SensorController
+from controllers.display_controller import DisplayController
 
-i2c = SoftI2C(sda=Pin(Pins.I2C_SDA), scl=Pin(Pins.I2C_SCL))
+def main():
+    i2c = SoftI2C(sda=Pin(Pins.I2C_SDA), scl=Pin(Pins.I2C_SCL))
 
-sensor = SensorController(i2c)
+    sensor = SensorController(i2c)
 
-display = DisplayController(i2c)
+    display = DisplayController(i2c)
 
-led = LedController()
+    led = LedController()
 
-print('Sensores e atuadores iniciados')
+    print('Sensores e atuadores iniciados')
 
-while True:
-    try:
-        sensor_status = sensor.get_status()
-        
-        display.show_message_by_status(sensor_status)
-        led.set_color_by_status(sensor_status)
-    except OSError as error:        
-        print('Erro ao ler o sensor: ', error)
+    app = App(sensor, display, led)
+    app.run()
 
-    sleep_ms(350)
+if __name__ == '__main__':
+    main()
