@@ -5,7 +5,8 @@ from utils.config import (
     Status,
     Colors,
     FREQUENCY,
-    PWM_MAX_DUTY
+    PWM_MAX_DUTY,
+    PERCENTAGE_MAX
 )
 
 class LedController:
@@ -15,9 +16,9 @@ class LedController:
         self.pwm_blue = PWM(Pin(Pins.LED_BLUE),freq=FREQUENCY)
 
     def set_color(self, percent_red, percent_green, percent_blue):
-        pwm_red_duty = int(percent_red / 100 * PWM_MAX_DUTY)
-        pwm_green_duty = int(percent_green / 100 * PWM_MAX_DUTY)
-        pwm_blue_duty = int(percent_blue / 100 * PWM_MAX_DUTY)
+        pwm_red_duty = int(percent_red / PERCENTAGE_MAX * PWM_MAX_DUTY)
+        pwm_green_duty = int(percent_green / PERCENTAGE_MAX * PWM_MAX_DUTY)
+        pwm_blue_duty = int(percent_blue / PERCENTAGE_MAX * PWM_MAX_DUTY)
 
         self.pwm_red.duty(pwm_red_duty)
         self.pwm_green.duty(pwm_green_duty)

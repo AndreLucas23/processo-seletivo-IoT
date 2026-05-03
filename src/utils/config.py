@@ -1,5 +1,7 @@
 FREQUENCY = 1000
 PWM_MAX_DUTY = 1023
+PERCENTAGE_MAX = 100
+DISPLAY_EMPTY = 0
 
 class Pins:
     I2C_SDA = 21
@@ -29,3 +31,11 @@ class Colors:
     GREEN  = (0, 100, 0)
     YELLOW = (100, 100, 0)
     RED = (100, 0, 0)
+
+class DisplayDimensions:
+    WIDTH = 128
+    HEIGHT = 64
+
+class Text:
+    LINE_OFFSET = 5
+    JUMP_PIXELS = 15
