@@ -1,6 +1,6 @@
 from machine import Pin, PWM
 
-from config import (
+from utils.config import (
     Pins,
     Status,
     Colors,

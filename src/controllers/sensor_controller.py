@@ -1,8 +1,8 @@
 from math import sqrt
 
-from mpu6050 import accel
+from drivers.mpu6050 import accel
 
-from config import (
+from utils.config import (
     Sensitivities,
     Thresholds,
     Status

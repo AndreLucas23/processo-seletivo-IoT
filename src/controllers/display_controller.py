@@ -1,6 +1,6 @@
-from ssd1306 import SSD1306_I2C
+from drivers.ssd1306 import SSD1306_I2C
 
-from config import Status
+from utils.config import Status
 
 class DisplayController:
     status_msgs = {
