@@ -1,331 +1,67 @@
-# Processo Seletivo – Intensivo Maker | IoT
-## Etapa Prática – Sistemas Embarcados
-
-Bem-vindo(a) à **etapa prática do processo seletivo para o Intensivo Maker | IoT**.
-
-Esta atividade tem como objetivo avaliar suas competências em **Sistemas Embarcados**, com foco em **organização de projeto, lógica de firmware e simulação de hardware**, a partir da aplicação prática dos conhecimentos adquiridos nos cursos EAD da etapa anterior.
-
-> 🎯 **Objetivo principal**  
-> Avaliar sua capacidade de **planejar, estruturar e desenvolver** uma solução funcional de sistemas embarcados, seguindo boas práticas de engenharia.
-
----
-
-## 🏁 Passo 0 – Antes de Tudo
-
-Se você **nunca utilizou Git ou GitHub**, não se preocupe.  
-Siga atentamente os passos abaixo — eles fazem parte do processo de aprendizagem esperado.
-
----
-
-### 1️⃣ Criação de Conta no GitHub
-
-1. Acesse: https://github.com  
-2. Clique em **Sign up**  
-3. Crie sua conta gratuita seguindo as instruções da plataforma  
-
-> 📌 O GitHub será utilizado para:
-> - Envio do seu projeto  
-> - Versionamento do código  
-> - Correção e validação automática via GitHub Actions  
-
----
-
-### 2️⃣ Instalação do Git
-
-O **Git** é a ferramenta responsável pelo controle de versões do seu código.
-
-### Windows
-Baixe e instale o **Git Bash**:  
-https://git-scm.com/downloads
-
-### Linux / macOS
-Verifique se o Git já está instalado:
-
-```bash
-git --version
-```
-> Caso não esteja, instale pelo gerenciador de pacotes do seu sistema.
-
-## ⚙ Passo 1 – Preparando o Ambiente
-
-Para desenvolver o desafio, você deverá criar uma cópia deste repositório no seu GitHub.
-
-### 1️⃣ Fork do Repositório
-No canto superior direito desta página, clique em Fork
-
-<img width="219" height="45" alt="image" src="https://github.com/user-attachments/assets/5d629626-513a-445c-ba0f-e5bb3e225187" />
-
-
-Uma cópia do repositório será criada no seu perfil do GitHub
-
-> 🔎 O Fork permite que você trabalhe de forma independente, sem alterar o repositório original do processo seletivo.
-
-### 2️⃣ Clone do Repositório
-
-No repositório do seu Fork, clique em **<> Code**
-
-<img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/abbd331b-a005-4633-89c6-afd16acbe828" />
-
-Copie a URL e execute no terminal:
-
-```bash
-git clone https://github.com/SEU_USUARIO/nome-do-repositorio.git
-cd nome-do-repositorio
-```
-
-> O comando git clone cria uma cópia local do repositório para desenvolvimento.
-
-### 3️⃣ Preparação do Ambiente de Execução
-
-Você pode executar o projeto de duas formas. Escolha apenas uma.
-
-#### 🔹 Opção A – Ambiente Python Local
-
-**Requisitos:**
-
-- Python 3.10 ou 3.11
-- pip
-
-**Instale as dependências:**
-
-```bash
-pip install -r requirements.txt
-```
-
-#### 🔹 Opção B – Dev Container (Recomendado)
-
-Este repositório inclui um Dev Container, garantindo um ambiente padronizado.
-
-**Requisitos:**
-
-- VS Code
-- Docker instalado
-- Extensão Dev Containers
-
-**Passos:**
-
-1. Abra o repositório no VS Code
-2. Clique em “Reopen in Container”
-3. Aguarde a criação automática do ambiente
-
-> ➡️ Todas as dependências serão instaladas automaticamente.
-
-## 🔐 Passo 2 – Criando sua API Key do Wokwi
-
-A simulação do projeto será executada automaticamente via GitHub Actions, utilizando o Wokwi CLI.
-
-Para isso, você precisa gerar uma API Key.
-
-1. Acesse: https://wokwi.com/dashboard/ci
-2. Faça login (Google ou GitHub)
-3. Clique em Generate API Token
-4. Copie a chave gerada (exemplo: wokwi-xxxxxxxx)
-
->⚠️ Importante
-- Nunca faça commit dessa chave
-- Ela deve ser armazenada apenas como secret no GitHub
-
-## 🔒 Passo 3 – Configurando a API Key no GitHub (Secrets)
-
-**No repositório do seu Fork:**
-
-1. Vá em Settings
-2. Acesse Secrets and variables → Actions
-3. Clique em New repository secret
-4. Nome: WOKWI_API_KEY
-5. Valor: sua chave gerada
-6. Salve
-
-> ✔️ As GitHub Actions do template já estão preparadas para usar essa variável automaticamente.
-
-## 🧠 Passo 4 – Desafio Técnico
-
-Você deverá desenvolver um projeto de sistemas embarcados simulados, utilizando Python e Wokwi.
-
-### 📁 Estrutura mínima esperada
-
-```text
-/project
- ├── src/
- │   └── main.py        # Código principal do projeto
- ├── wokwi.toml         # Configuração da simulação
- ├── diagram.json       # Circuito no Wokwi
- └── README.md          # Explicação do seu projeto
-```
-
-> Você pode expandir essa estrutura se desejar, desde que mantenha os arquivos essenciais.
-
-### 🛠 Como Desenvolver seu Projeto
-
-O desenvolvimento acontece principalmente nos arquivos abaixo:
-
-#### 1️⃣ src/main.py
-
-- Código Python executado na simulação
-- Implementa a lógica do sistema embarcado
-- Exemplos: controle de LEDs, leitura de sensores, estados, temporizações, etc.
-
-#### 2️⃣ diagram.json
-
-- Define o hardware virtual do projeto
-- Componentes como:
-  - LEDs
-  - Botões
-  - Sensores
-  - Placa microcontroladora
-
-#### 3️⃣ wokwi.toml
-
-- Configura a simulação:
-  - Tipo de placa
-  - Framework
-  - Dependências adicionais
-
-#### 4️⃣ Commit e Push
-
-Após suas alterações:
-
-```bash
-git add .
-git commit -m "Descrição clara do que foi feito"
-git push
-```
-### ⚙ Execução Automática (GitHub Actions)
-
-A cada push, o GitHub Actions irá automaticamente:
-
-- Executar o pipeline de build
-- Rodar a simulação via Wokwi CLI
-- Validar que o projeto executa sem erros
-
-### 📌 Caso algo falhe:
-
-- Vá até a aba Actions
-- Analise os logs da execução
-- Corrija e envie novamente
-
-## 📊 Critérios de Avaliação
-
-Esta etapa será avaliada considerando:
-
-- Funcionamento correto da simulação
-- Código organizado e legível
-- Estrutura de arquivos correta
-- Uso adequado do Wokwi
-- Commits claros e bem descritos
-- Projeto executando sem falhas nas Actions
-
----
-
-## 📎 Submissão Final
-
-Após concluir o desenvolvimento:
-
-1. Verifique se o projeto **executa sem erros** nas GitHub Actions  
-2. Confirme que todos os arquivos obrigatórios estão presentes  
-3. Copie o link do **seu repositório no GitHub**
-
-📤 Envie o link conforme as orientações do processo seletivo na plataforma **Moodle**.
-
----
-
-## 📝 Relatório do Candidato
-
-O arquivo **`README.md` do seu repositório** deve ser utilizado como o  
-**relatório final do desafio técnico**.
-
-Preencha todas as seções abaixo de forma **clara, objetiva e técnica**.
-
-> 💡 **Dica importante**  
-> Não é necessário um relatório extenso.  
-> O principal critério é demonstrar **clareza nas decisões técnicas**, organização e entendimento do sistema embarcado desenvolvido.
-
----
-
-### 👤 Identificação do Candidato
-
-- **Nome completo:**  
-- **GitHub:**  
+# 🚢 Desafio de Sistemas Embarcados: Monitoramento de Cargas e Contêineres
+
+👤 **Identificação do Candidato**
+* **Nome completo:** André Lucas de Souza Lima
+* **GitHub:** <a href='https://github.com/AndreLucas23'>AndreLucas23</a>  
 
 ---
 
 ## 1️⃣ Visão Geral da Solução
 
-Descreva, em poucas palavras:
+**Objetivo do Projeto:**
+O projeto consiste no desenvolvimento de um sistema embarcado de telemetria e segurança logística focado em **Edge Computing**. O objetivo é monitorar, em tempo real, a integridade física de contêineres de carga durante o transporte, detectando impactos severos (quedas, colisões) ou inclinações perigosas (tombamento de carga) decorrentes de manuseio inadequado.
 
-- Qual é o objetivo do seu projeto  
-- O que o sistema embarcado simulado faz  
-- Como o usuário interage com ele (se aplicável)
+**Funcionamento do Sistema:**
+Com um sensor MPU6050 fixado rigidamente à estrutura do contêiner, o sistema realiza leituras contínuas da aceleração (força G de impactos) e do giroscópio (velocidade angular e torção). O processador local calcula a magnitude vetorial dessas forças e compara os resultados com os níveis de tolerância da carga embarcada, classificando o status em três níveis: **OK** (Manuseio Seguro), **PERIGO** (Aviso de Turbulência/Choque Leve) ou **CRÍTICO** (Impacto Grave ou Tombamento).
+
+**Interação do Usuário:**
+A operação é totalmente autônoma. Inspetores de carga, estivadores ou operadores de guindaste não precisam acionar comandos; eles realizam a triagem visual no pátio através de duas interfaces alocadas na face externa do contêiner: um Display OLED (exibindo o laudo textual do eixo afetado) e um farol LED RGB (sinalização visual de longa distância).
 
 ---
 
 ## 2️⃣ Arquitetura do Sistema Embarcado
 
-Explique a arquitetura lógica do seu projeto, abordando:
+A arquitetura lógica foi estruturada utilizando **Programação Orientada a Objetos (POO)**. O design isola completamente a aquisição de dados brutos das regras de negócio de logística, utilizando injeção de dependências para o barramento I2C.
 
-- Fluxo principal do programa (`main.py`)  
-- Estrutura de estados, loops ou temporizações  
-- Como os componentes interagem entre si  
-
-Se desejar, utilize tópicos ou um pequeno diagrama em texto.
+**Fluxo Principal e Estrutura Lógica:**
+1. **Inicialização (`main.py`):** "Liga" o contêiner, configurando os protocolos de comunicação e instanciando os periféricos.
+2. **Laço Contínuo (`app.py`):** Mantém a rotina de vigilância ativa (`while self.running`), consultando os sensores em intervalos controlados.
+3. **Processamento Matemático (`sensor_controller.py`):** Converte a telemetria bruta em dados compreensíveis. Esta camada decide se um solavanco de caminhão é ignorável ou se uma queda de guindaste rompeu o limite de segurança, devolvendo um dicionário de status para a aplicação.
 
 ---
 
 ## 3️⃣ Componentes Utilizados na Simulação
 
-Liste os principais componentes definidos no `diagram.json`, por exemplo:
+A simulação no Wokwi reproduz a eletrônica embarcada no módulo de rastreamento do contêiner, utilizando os seguintes componentes:
 
-- Tipo de placa utilizada  
-- LEDs, botões, sensores, atuadores, etc.  
-- Função de cada componente no sistema  
+* **Microcontrolador:** Unidade de processamento local que analisa os dados da carga sem depender de nuvem ou sinal GPS/Internet.
+* **Sensor MPU6050 (Acelerômetro e Giroscópio):** O "labirinto" do contêiner. Conectado via I2C (SDA 21, SCL 22). Capta a violência mecânica (choques físicos) e mudanças abruptas de ângulo (içamento torto ou deslizamento em navios).
+* **Display OLED SSD1306:** Conectado via I2C (SDA 21, SCL 22). Tela de auditoria para fiscais de porto, informando qual anomalia ocorreu (se foi de aceleração ou rotação).
+* **LED RGB:** Conectado via PWM (Pinos 25, 26 e 27). Age como um "semáforo" da carga, permitindo que a equipe de transporte saiba rapidamente se a caixa exige inspeção interna.
 
 ---
 
 ## 4️⃣ Decisões Técnicas Relevantes
 
-Explique brevemente decisões importantes tomadas durante o desenvolvimento, como:
-
-- Organização do código  
-- Uso de funções, estados ou constantes  
-- Estratégias para temporização ou controle lógico  
+* **Cálculo de Magnitude Vetorial:** O `SensorController` não confia em eixos estáticos, aplicando a fórmula $\sqrt{x^2 + y^2 + z^2}$. **Justificativa:** Em logística, não sabemos de qual lado o contêiner vai cair ou colidir. A magnitude vetorial garante que a força do impacto seja registrada independentemente da orientação espacial do choque.
+* **Limiares Parametrizados (`config.py`):** As constantes de segurança (ex: `ACCEL_CRITICAL`) foram isoladas. **Justificativa:** Isso permite que o sistema seja facilmente reprogramado dependendo do tipo de frete. Uma carga de algodão terá limiares altíssimos, enquanto uma carga de vidros ou eletrônicos terá limiares críticos rigorosos no mesmo código.
+* **Compartilhamento de Barramento (I2C):** O sensor de movimento e o display operam nas mesmas portas. **Justificativa:** Economiza pinos do microcontrolador e demonstra maturidade em arquitetura de hardware multiplexado.
+* **Janela de Polling (350ms):** Intervalo definido no laço principal. **Justificativa:** Amostrar dados 3 vezes por segundo é ideal para capturar solavancos físicos, evitando o excesso de processamento (*overhead*) que esgotaria a bateria autônoma do dispositivo ao longo da viagem.
 
 ---
 
 ## 5️⃣ Resultados Obtidos
 
-Descreva o comportamento final do sistema:
+O sistema embarcado demonstrou aderência total ao cenário logístico simulado:
 
-- O que funciona corretamente  
-- Quais requisitos foram atendidos  
-- Resultado observado na simulação do Wokwi  
-
----
-
-## 6️⃣ Comentários Adicionais (Opcional)
-
-Utilize este espaço para comentar, se desejar:
-
-- Dificuldades encontradas  
-- Limitações da solução  
-- Melhorias que você faria com mais tempo  
-- Principais aprendizados durante o desafio  
+* **Detecção Confiável:** Qualquer impacto bruto (aceleração acima da curva de tolerância) ou tombamento severo (giroscópio) foi imediatamente classificado e exibido.
+* **Resiliência Anti-Falha:** O bloco `try/except` no arquivo de aplicação garante que, se o MPU6050 sofrer uma desconexão elétrica por uma fração de segundo devido à vibração mecânica intensa, o processador apenas reportará o erro no log de sistema, impedindo que o dispositivo inteiro congele no meio do oceano ou da estrada.
+* **Sinalização Hierárquica:** O `LedController` funciona corretamente como um *Andon* industrial. Mesmo que a inclinação esteja normal (`OK`), um impacto violento na aceleração sobrepõe a visualização geral para `CRITICAL` (Vermelho), alertando que a caixa foi comprometida.
 
 ---
 
-> ✅ Este relatório faz parte da avaliação técnica.  
-> Clareza, objetividade e organização são tão importantes quanto o funcionamento do código.
+## 6️⃣ Comentários Adicionais (Reflexões e Expansões)
 
----
-
-## 🆘 Suporte
-
-Em caso de dúvidas:
-
-- Consulte o material dos cursos EAD
-- Leia atentamente este README
-- Analise os logs das GitHub Actions
-- Utilize os canais oficiais para contato com os instrutores
-
-Boa sorte no processo seletivo.
-Mostre sua capacidade de pensar como um engenheiro de sistemas embarcados.
-****
+* **Limitações do Arquétipo:** O modelo atual indica perigo em tempo real visualmente. No entanto, se o contêiner cair durante a noite no meio de uma viagem, ao estabilizar, o sistema voltará para `OK`, perdendo o histórico da infração caso ninguém o veja na hora.
+* **Melhorias Futuras para IoT Logística:** A principal melhoria seria adicionar o registro de dados (Datalogging). Uma vez detectado um nível `CRITICAL`, o sistema gravaria a ocorrência em um Cartão SD ou a transmitiria via rádio (LoRa/GSM) criando uma "caixa preta" irrefutável para fins de acionamento de seguro de cargas.
+* **Uso de Interrupções:** Para maximizar a vida útil da bateria, o Polling poderia ser substituído por *Wake-on-Motion* (IRQ). O processador ficaria adormecido durante toda a viagem e só "acordaria" para acender a luz vermelha no instante exato em que o MPU6050 acusasse um impacto fora do comum.
