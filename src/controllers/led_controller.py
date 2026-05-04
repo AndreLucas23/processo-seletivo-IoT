@@ -9,12 +9,14 @@ from utils.config import (
     PERCENTAGE_MAX
 )
 
+# Cria a classe do controller do LED RGB
 class LedController:
     def __init__(self):
         self.pwm_red = PWM(Pin(Pins.LED_RED),freq=FREQUENCY)
         self.pwm_green = PWM(Pin(Pins.LED_GREEN),freq=FREQUENCY)
         self.pwm_blue = PWM(Pin(Pins.LED_BLUE),freq=FREQUENCY)
 
+    # Define a função para mudar a cor do LED a partir das porcentagens de vermelho, verde e azul
     def set_color(self, percent_red, percent_green, percent_blue):
         pwm_red_duty = int(percent_red / PERCENTAGE_MAX * PWM_MAX_DUTY)
         pwm_green_duty = int(percent_green / PERCENTAGE_MAX * PWM_MAX_DUTY)
@@ -24,6 +26,7 @@ class LedController:
         self.pwm_green.duty(pwm_green_duty)
         self.pwm_blue.duty(pwm_blue_duty)
 
+    # Define a função para mduar a cor do LED a partir dos status do acelerômetro e giroscópio
     def set_color_by_status(self, sensor_status):
         if Status.CRITICAL in sensor_status.values():
             self.set_color(*Colors.RED)

@@ -1,5 +1,6 @@
 from time import sleep_ms
 
+# Cria a classe App responsável pelo fluxo principal do programa
 class App:
     def __init__(self, sensor, display, led):
         self.sensor = sensor

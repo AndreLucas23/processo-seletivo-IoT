@@ -8,10 +8,13 @@ from utils.config import (
     Status
 )
 
+# Cria a classe do controller do sensor MPU5060
 class SensorController:
     def __init__(self, i2c):
         self.sensor = accel(i2c)
 
+    # Define a função para extrair os valores de leitura do sensor e
+    # processá-los para obter métricas importantes
     def get_metrics(self):
         data = self.sensor.get_values()
 
@@ -36,6 +39,8 @@ class SensorController:
             'temperature': data['Tmp']
         }
 
+    # Define a função para obter os status do acelerômetro e giroscópio
+    # a partir das métricas calculadas pela função get_metrics()
     def get_status(self):
         metrics = self.get_metrics()
 
